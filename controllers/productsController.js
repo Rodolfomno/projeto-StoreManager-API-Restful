@@ -15,7 +15,7 @@ const getAllProductsById = async (req, res, next) => {
         const productById = await productService.getAllProductsById(id);
         console.log(productById[0]);
         if (!productById[0]) return res.status(404).json({ message: 'Product not found' });
-        return res.status(200).json(productById);
+        return res.status(200).json(productById[0]);
     } catch (error) {
         next(error);
     }
