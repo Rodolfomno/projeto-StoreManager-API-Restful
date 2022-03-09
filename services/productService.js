@@ -17,9 +17,17 @@ const createNewProduct = async (name, quantity) => {
 
     const modelResponse = await productModel.createNewProduct(name, quantity);
     const product = { id: modelResponse.insertId, name, quantity };
-    console.log(product, 'service');
 
     return product; 
 };
 
-module.exports = { getAllProducts, getAllProductsById, createNewProduct };
+const updateProduct = async (id, name, quantity) => {
+    const product = await productModel.getAllProductsById(id);
+
+    if (!product.length) return undefined;
+
+    await productModel.updateProduct(id, name, quantity);
+    return { id, name, quantity };
+};
+
+module.exports = { getAllProducts, getAllProductsById, createNewProduct, updateProduct };

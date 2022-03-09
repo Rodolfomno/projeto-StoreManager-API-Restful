@@ -16,18 +16,22 @@ const getAllProductsById = async (id) => {
 const getName = async (productName) => {
     const query = 'SELECT * FROM StoreManager.products WHERE NAME = ?';
     const [response] = await connection.execute(query, [productName]);
-    console.log(response);
 
     return response;
 };
 
 const createNewProduct = async (name, quantity) => {
     const query = 'INSERT INTO StoreManager.products (name, quantity) VALUES(?,?)';
-    console.log(name, quantity);
     const [response] = connection.execute(query, [name, quantity]);
-    console.log(response);  
 
     return response;
 };
 
-module.exports = { getAll, getAllProductsById, getName, createNewProduct };
+const updateProduct = async (id, name, quantity) => {
+    const query = 'UPDATE StoreManager.products SET name = ? , quantity = ? WHERE id = ?';
+
+    const [response] = await connection.execute(query, [name, quantity, id]);
+    return response;
+};
+
+module.exports = { getAll, getAllProductsById, getName, createNewProduct, updateProduct };
