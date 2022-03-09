@@ -34,4 +34,18 @@ const updateProduct = async (id, name, quantity) => {
     return response;
 };
 
-module.exports = { getAll, getAllProductsById, getName, createNewProduct, updateProduct };
+const deleteProduct = async (id) => {
+    const query = 'DELETE FROM StoreManager.products WHERE id = ?';
+
+    const [response] = await connection.execute(query, [id]);
+    return response;
+};
+
+module.exports = { 
+    getAll,
+     getAllProductsById,
+      getName,
+       createNewProduct,
+        updateProduct,
+         deleteProduct,
+         };
