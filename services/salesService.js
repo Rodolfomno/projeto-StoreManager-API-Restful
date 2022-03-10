@@ -10,4 +10,16 @@ const getAllSalesById = async (id) => {
     return modelResponse;
 };
 
-module.exports = { getAllProducts, getAllSalesById };
+const newSale = async (body) => {
+    const sale = await salesModel.newSale();
+
+    body.forEach(async (product) => {
+        await salesModel.newSaleProduct(sale.insertId, product.productId, product.quantity);
+    });
+
+    const response = { id: sale.insertId, itemsSold: body };
+
+    return response;
+};
+
+module.exports = { getAllProducts, getAllSalesById, newSale };

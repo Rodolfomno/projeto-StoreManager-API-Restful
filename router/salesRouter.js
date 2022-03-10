@@ -5,6 +5,9 @@ const salesController = require('../controllers/salesController');
 const salesRouter = express.Router();
 
 salesRouter.get('/', salesController.getAllSales);
+
 salesRouter.get('/:id', salesController.getAllSalesById);
+
+salesRouter.post('/', salesController.newSale);
 
 module.exports = salesRouter;

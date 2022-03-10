@@ -32,4 +32,20 @@ ORDER BY sp.sale_id , sp.product_id;`;
     return result;
 };
 
-module.exports = { getAll, getAllSalesById };
+const newSaleProduct = async (saleId, productId, quantity) => {
+    const query = `INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) 
+      VALUES (?, ?, ?)`;
+  
+    const [response] = await connection.execute(query, [saleId, productId, quantity]);
+
+    return response;
+};
+
+const newSale = async () => {
+    const query = 'INSERT INTO StoreManager.sales (date) VALUES (NOW())';
+    const [response] = await connection.execute(query);
+
+    return response;
+};
+
+module.exports = { getAll, getAllSalesById, newSale, newSaleProduct };
