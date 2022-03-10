@@ -30,10 +30,14 @@ const updateSale = async (id, body) => {
 
 //   await salesModel.updateSale(id, product.productId, product.quantity)
 
-    body.forEach(async ({ productId, quantity }) => {
-        await salesModel.updateSale(id, productId, quantity);
-        return { id, productId, quantity };
-    });
+// resolucao para resolver problema de async await em hofs, no await in loop no https://eslint.org/docs/rules/no-await-in-loop
+    const results = [];
+    for (let index = 0; index < body.length; index += 1) {
+        const { productId, quantity } = body[index];
+        const updatedSale = salesModel.updateSale(id, productId, quantity);
+        results.push(updatedSale);
+    }
+    return Promise.all(results);
 };
 
 module.exports = { getAllProducts, getAllSalesById, newSale, updateSale };

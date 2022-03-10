@@ -35,11 +35,9 @@ const updateSale = async (req, res, next) => {
     try {
         const { id } = req.params;
         const { body } = req;
-        console.log(body);
         await salesService.updateSale(id, body);
 
         const response = { saleId: Number(id), itemUpdated: body };
-        console.log(response);
         return res.status(200).json(response);
     } catch (error) {
         next(error);
