@@ -22,7 +22,7 @@ const getName = async (productName) => {
 
 const createNewProduct = async (name, quantity) => {
     const query = 'INSERT INTO StoreManager.products (name, quantity) VALUES(?,?)';
-    const [response] = connection.execute(query, [name, quantity]);
+    const [response] = await connection.execute(query, [name, quantity]);
 
     return response;
 };
@@ -43,9 +43,9 @@ const deleteProduct = async (id) => {
 
 module.exports = { 
     getAll,
-     getAllProductsById,
-      getName,
-       createNewProduct,
-        updateProduct,
-         deleteProduct,
-         };
+    getAllProductsById,
+    getName,
+    createNewProduct,
+    updateProduct,
+    deleteProduct,
+};

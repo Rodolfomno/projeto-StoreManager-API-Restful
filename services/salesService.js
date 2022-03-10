@@ -22,4 +22,18 @@ const newSale = async (body) => {
     return response;
 };
 
-module.exports = { getAllProducts, getAllSalesById, newSale };
+const updateSale = async (id, body) => {
+    const getSaleId = await salesModel.getAllSalesById(id);
+//    const [product] = body;
+
+    if (!getSaleId.length) return undefined;
+
+//   await salesModel.updateSale(id, product.productId, product.quantity)
+
+    body.forEach(async ({ productId, quantity }) => {
+        await salesModel.updateSale(id, productId, quantity);
+        return { id, productId, quantity };
+    });
+};
+
+module.exports = { getAllProducts, getAllSalesById, newSale, updateSale };

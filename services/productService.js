@@ -12,12 +12,12 @@ const getAllProductsById = async (id) => {
 
 const createNewProduct = async (name, quantity) => {
     const getName = await productModel.getName(name);
-
+    
     if (getName.length) return undefined;
-
+    
     const modelResponse = await productModel.createNewProduct(name, quantity);
-    const product = { id: modelResponse.insertId, name, quantity };
 
+    const product = { id: modelResponse.insertId, name, quantity };
     return product; 
 };
 
@@ -41,8 +41,8 @@ const deleteProduct = async (id) => {
 
 module.exports = { 
     getAllProducts,
-     getAllProductsById,
-      createNewProduct,
-       updateProduct,
-        deleteProduct,
-    };
+    getAllProductsById,
+    createNewProduct,
+    updateProduct,
+    deleteProduct,
+};
