@@ -1,7 +1,7 @@
 const salesModel = require('../models/salesModel');
 
-const getAllProducts = async () => {
-    const modelResponse = await salesModel.getAll();
+const getAllSales = async () => {
+    const modelResponse = await salesModel.getAllSales();
     return modelResponse;
 };
 
@@ -24,11 +24,8 @@ const newSale = async (body) => {
 
 const updateSale = async (id, body) => {
     const getSaleId = await salesModel.getAllSalesById(id);
-//    const [product] = body;
 
     if (!getSaleId.length) return undefined;
-
-//   await salesModel.updateSale(id, product.productId, product.quantity)
 
 // resolucao para resolver problema de async await em hofs, no await in loop no https://eslint.org/docs/rules/no-await-in-loop
     const results = [];
@@ -40,4 +37,4 @@ const updateSale = async (id, body) => {
     return Promise.all(results);
 };
 
-module.exports = { getAllProducts, getAllSalesById, newSale, updateSale };
+module.exports = { getAllSales, getAllSalesById, newSale, updateSale };

@@ -1,6 +1,6 @@
 const connection = require('./connection');
 
-const getAll = async () => {
+const getAllSales = async () => {
     const query = `SELECT 
     sp.sale_id AS saleId,
     sp.product_id AS productId,
@@ -56,4 +56,4 @@ const updateSale = async (saleId, productId, quantity) => {
     return response;
   };
 
-module.exports = { getAll, getAllSalesById, newSale, newSaleProduct, updateSale };
+module.exports = { getAllSales, getAllSalesById, newSale, newSaleProduct, updateSale };
