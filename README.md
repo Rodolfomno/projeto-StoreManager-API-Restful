@@ -9,6 +9,6 @@ Nesse projeto:
 - Conecta aplicação com diferentes bancos de dados;
 - Estrutura uma aplicação em camadas;
 - Delega responsabilidades específicas para cada parte do app;
-- Melhorar manutenibilidade e reusabilidade de código;
-- Aplicar os padrões REST;
+- Melhora manutenibilidade e reusabilidade de código;
+- Aplica os padrões REST;
 - Escreve assinaturas para APIs intuitivas e facilmente entendíveis.
